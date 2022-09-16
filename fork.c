@@ -5,7 +5,7 @@
 #include <unistd.h>
 int main(){
 	int n;
-	printf("fork function is used to divide the process p1 into two process p1,p2 it returns 0 when successfully ");
+	printf("fork function is used to divide the process p1 into two process p1,p2 ");
 	fork();
 	for(int i=0;i<100;i++){
 		printf("%d\n",getpid());
