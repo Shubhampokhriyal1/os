@@ -35,6 +35,7 @@ int main(){
      arr[0].wt=arr[0].tat-arr[0].bt;
      int sum_tat=arr[0].tat;
      int sum_wait=arr[0].wt;
+     int rt=arr[0].ct-arr[0].bt;
      for(int i=1;i<n;i++){
           if(arr[i].at>=arr[i-1].ct) arr[i].ct=arr[i].at+arr[i].bt;
           else arr[i].ct=arr[i-1].ct+arr[i].bt;
@@ -43,15 +44,16 @@ int main(){
           arr[i].wt=arr[i].tat-arr[i].bt;
           sum_tat+=arr[i].tat;
           sum_wait=arr[i].wt;
+          rt+=arr[i].ct-arr[i].bt;
      }
      
      qsort((void*)arr, n, sizeof(arr[0]), com1);
-     
+     printf("pid\tat\tbt\tct\ttat\twt\n");
      for(int i=0;i<n;i++){
-          printf("process id: %d, arrival time: %d, burst time: %d, completion time: %d,turn around tie: %d, wait time: %d \n",arr[i].pid,arr[i].at,arr[i].bt,arr[i].ct,arr[i].tat,arr[i].wt);
+          printf("%d\t%d\t%d\t%d\t%d\t%d\n",arr[i].pid,arr[i].at,arr[i].bt,arr[i].ct,arr[i].tat,arr[i].wt);
      }
      
      
-     printf("total turn around :%d \n total wait :%d \n",sum_tat,sum_wait);
+     printf("total turn around :%d \n total wait :%d \n rt : %d \n",sum_tat,sum_wait,rt);
      return 0;
 }
